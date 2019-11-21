@@ -1,0 +1,36 @@
+# Travis CI build file.
+
+# whitelist (branches that should be built)
+branches:
+  only:
+    - master
+    - /^issue.*$/
+
+dist: xenial
+sudo: required
+
+jobs:
+    include:
+      - os: linux
+        services: docker
+        env: DOCKER_IMAGE=swift:5.0.3-xenial SWIFT_SNAPSHOT=5.0.3
+      - os: linux
+        services: docker
+        env: DOCKER_IMAGE=swift:5.1
+      - os: linux
+        services: docker
+        env: DOCKER_IMAGE=swift:5.1 SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT
+      - os: osx
+        osx_image: xcode10.2
+        env: SWIFT_SNAPSHOT=5.0.1 JAZZY_ELIGIBLE=true
+      - os: osx
+        osx_image: xcode11
+      - os: osx
+        osx_image: xcode11
+        env: SWIFT_SNAPSHOT=$SWIFT_DEVELOPMENT_SNAPSHOT
+
+before_install:
+  - git clone https://github.com/IBM-Swift/Package-Builder.git
+
+script:
+  - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR

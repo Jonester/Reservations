@@ -28,7 +28,7 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
         let settingsBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settings))
         navigationItem.leftBarButtonItem = settingsBarButtonItem
 
-        reservations = fetchedReservations.filter { $0.deletedAt == nil }
+        reservations = fetchedReservations.filter { $0.deletedAt == nil && $0.messageSentAt == nil }
 
         let nib = UINib(nibName: "ReservationCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ReservationCell")
@@ -63,10 +63,7 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
         deleteAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
             reservation.deletedAt = Date()
-            guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
-            let fetchedReservations = Reservation.fetchReservations(in: container.viewContext) ?? self.reservations
-            self.reservations = fetchedReservations.filter { $0.deletedAt == nil }
-            tableView.reloadData()
+            self.refreshTableView()
         })
 
         deleteAction.backgroundColor = .red
@@ -82,7 +79,8 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
         let title = NSLocalizedString("Send Message", comment: "")
 
         messageAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
-
+            reservation.messageSentAt = Date()
+            self.refreshTableView()
         })
 
         messageAction.backgroundColor = UIColor(red: 0.02, green: 0.33, blue: 0.43, alpha: 1)
@@ -94,10 +92,14 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
     func refreshTableView() {
         guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
+        do {
+            try container.viewContext.save()
+        } catch {
+            print(error)
+        }
         let fetchedReservations = Reservation.fetchReservations(in: container.viewContext) ?? reservations
-        reservations = fetchedReservations.filter { $0.deletedAt == nil }
+        reservations = fetchedReservations.filter { $0.deletedAt == nil && $0.messageSentAt == nil }
         tableView.reloadData()
-
     }
 }
 
@@ -106,7 +108,7 @@ private extension ReservationsViewController {
         let addReservationViewController = AddReservationViewController()
         let navController = UINavigationController(rootViewController: addReservationViewController)
         modalPresentationStyle = .formSheet
-        addReservationViewController.preferredContentSize = CGSize(width: 1024, height: 300)
+//        addReservationViewController.preferredContentSize = CGSize(width: 1024, height: 300)
         addReservationViewController.delegate = self
         present(navController, animated: true, completion: nil)
     }
@@ -115,7 +117,7 @@ private extension ReservationsViewController {
         let settingsViewController = SettingsViewController()
         let navController = UINavigationController(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
-        settingsViewController.preferredContentSize = CGSize(width: 1024, height: 300)
+//        settingsViewController.preferredContentSize = CGSize(width: settingsViewController.view.frame.size.width, height: 300)
         present(navController, animated: true, completion: nil)
     }
 }

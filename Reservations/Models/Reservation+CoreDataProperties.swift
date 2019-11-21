@@ -23,5 +23,6 @@ extension Reservation {
     @NSManaged public var index: Int16
     @NSManaged public var uuid: String
     @NSManaged public var deletedAt: Date?
+    @NSManaged public var messageSentAt: Date?
 
 }

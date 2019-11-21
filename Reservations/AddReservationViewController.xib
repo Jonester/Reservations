@@ -77,7 +77,7 @@
                 <constraint firstItem="2r4-fW-fWp" firstAttribute="width" secondItem="s22-YH-dwq" secondAttribute="width" multiplier="0.8" id="wvc-XF-TZQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="166" y="-94"/>
+            <point key="canvasLocation" x="71" y="-89"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>

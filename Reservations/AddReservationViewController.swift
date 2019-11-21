@@ -35,7 +35,6 @@ class AddReservationViewController: UIViewController {
     }
 
     @objc func saveReservation() {
-
         guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
         let context = container.viewContext
 
@@ -53,6 +52,12 @@ class AddReservationViewController: UIViewController {
             self.delegate?.refreshTableView()
         }
     }
+
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300)
+//        view.bounds.size = CGSize(width: view.frame.size.width, height: 300)
+//    }
 
     @objc func cancel() {
         dismiss(animated: true, completion: nil)

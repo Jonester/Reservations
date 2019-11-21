@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet var messageTextView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,16 @@ class SettingsViewController: UIViewController {
     }
 
     @objc func saveSettings() {
-        print("")
+        guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
+        let context = container.viewContext
+        guard let message = messageTextView.text else { return }
+        let _ = Settings.settings(message: message, context: context)
+        do {
+            try context.save()
+        } catch {
+            print("Oops")
+        }
+        dismiss(animated: true, completion: nil)
     }
 
 
