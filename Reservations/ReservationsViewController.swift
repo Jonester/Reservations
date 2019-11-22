@@ -18,21 +18,7 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
-        guard let fetchedReservations = Reservation.fetchReservations(in: container.viewContext) else { return }
-
-        title = NSLocalizedString("Reservations Queue", comment: "")
-
-        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addReservation))
-        navigationItem.rightBarButtonItem = addBarButtonItem
-        let settingsBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settings))
-        navigationItem.leftBarButtonItem = settingsBarButtonItem
-
-        reservations = fetchedReservations.filter { $0.deletedAt == nil && $0.messageSentAt == nil }
-
-        let nib = UINib(nibName: "ReservationCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "ReservationCell")
+        setUpView()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,20 +35,35 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
             cell.phoneNumberLabel.text = NSLocalizedString(reservation.phoneNumber, comment: "")
             cell.partySizeLabel.text = String(format: NSLocalizedString("%i", comment: ""), reservation.partySize)
         }
-        
-//        cell.nameLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
-//        cell.phoneNumberLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
-//        cell.partySizeLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
-//        
-//        cell.nameLabel.layer.borderWidth = 1.0
-//        cell.phoneNumberLabel.layer.borderWidth = 1.0
-//        cell.partySizeLabel.layer.borderWidth = 1.0
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = reservations[sourceIndexPath.row]
+        movedObject.index = Int16(destinationIndexPath.row)
+        let displacedObject = reservations[destinationIndexPath.row]
+        displacedObject.index = Int16(sourceIndexPath.row)
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+        reservations.remove(at: sourceIndexPath.row)
+        reservations.insert(movedObject, at: destinationIndexPath.row)
+        do {
+            try context.save()
+        } catch {
+            print("oops")
+        }
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -72,6 +73,14 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
         deleteAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
             reservation.deletedAt = Date()
+            reservation.index = -1
+            guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else { return }
+            do {
+                try context.save()
+            } catch {
+                print("oops")
+            }
+            Reservation.resetIndex(in: context)
             self.refreshTableView()
         })
 
@@ -89,21 +98,27 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
         messageAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
             reservation.messageSentAt = Date()
-            guard let client = KituraKit(baseURL: "", containsSelfSignedCert: false) else {
-                return
+            reservation.index = -1
+//            guard let client = KituraKit(baseURL: "", containsSelfSignedCert: false) else { return }
+            guard let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext) else { return }
+            do {
+                try context.save()
+            } catch {
+                print("oops")
             }
-            let settings = Settings.fetchSettings(in: ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!)
-            guard let setting = settings?.first else { return }
-            let messageParams = MessageParams(phone: reservation.phoneNumber, message: setting.message)
-            client.post("/message", data: messageParams) { (response: [MessageResponse]?, error: Error?) in
-                DispatchQueue.main.async {
+//            let settings = Settings.fetchSettings(in: context)
+//            guard let setting = settings?.first else { return }
+//            let messageParams = MessageParams(phone: reservation.phoneNumber, message: setting.message)
+//            client.post("/message", data: messageParams) { (response: [MessageResponse]?, error: Error?) in
+//                DispatchQueue.main.async {
 //                    guard let realm = try? Realm() else { return }
 //                    if error != nil {
 //                        
 //                        return
 //                    }
-                }
-            }
+//                }
+//            }
+            Reservation.resetIndex(in: context)
             self.refreshTableView()
         })
 
@@ -128,6 +143,26 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 }
 
 private extension ReservationsViewController {
+    
+    func setUpView() {
+        guard let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer else { return }
+        guard let fetchedReservations = Reservation.fetchActiveReservations(in: container.viewContext) else { return }
+        reservations = fetchedReservations
+        
+        title = NSLocalizedString("Reservations Queue", comment: "")
+
+        let settingsBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settings))
+        navigationItem.leftBarButtonItem = settingsBarButtonItem
+        
+        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addReservation))
+        let editBarButtonItem = UIBarButtonItem(title: "Edit List Order",style: .done, target: self, action: #selector(editReservationsList))
+        
+        navigationItem.rightBarButtonItems = [addBarButtonItem, editBarButtonItem]
+
+        let nib = UINib(nibName: "ReservationCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "ReservationCell")
+    }
+    
     @objc func addReservation() {
         let addReservationViewController = AddReservationViewController()
         let navController = UINavigationController(rootViewController: addReservationViewController)
@@ -141,5 +176,20 @@ private extension ReservationsViewController {
         let navController = UINavigationController(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc func editReservationsList() {
+        tableView.isEditing = tableView.isEditing ? false : true
+        let rightBarButtonItems = navigationItem.rightBarButtonItems
+        //Not hacky at all
+        if tableView.isEditing {
+            let editButtonArray = rightBarButtonItems?.filter{ $0.title == "Edit List Order" }
+            guard let editButton = editButtonArray?.first else { return }
+            editButton.title = "Finish Editing"
+        } else {
+            let editButtonArray = rightBarButtonItems?.filter{ $0.title == "Finish Editing" }
+            guard let editButton = editButtonArray?.first else { return }
+            editButton.title = "Edit List Order"
+        }
     }
 }
