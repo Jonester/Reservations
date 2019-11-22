@@ -53,12 +53,6 @@ class AddReservationViewController: UIViewController {
         }
     }
 
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 300)
-//        view.bounds.size = CGSize(width: view.frame.size.width, height: 300)
-//    }
-
     @objc func cancel() {
         dismiss(animated: true, completion: nil)
     }

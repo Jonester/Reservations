@@ -16,7 +16,7 @@
         </placeholder>
         <view contentMode="scaleToFill" id="s22-YH-dwq">
             <rect key="frame" x="0.0" y="0.0" width="1024" height="250"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2r4-fW-fWp" userLabel="Horizontal Stack View 1">
                     <rect key="frame" x="102.5" y="80" width="819" height="34"/>
@@ -65,7 +65,7 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="j4k-Bd-uhZ" firstAttribute="width" secondItem="B3m-UB-jMb" secondAttribute="width" id="3TQ-gU-rVW"/>
                 <constraint firstItem="hHG-qz-oBy" firstAttribute="top" secondItem="2r4-fW-fWp" secondAttribute="bottom" constant="20" id="5LZ-5l-PbC"/>
@@ -77,7 +77,7 @@
                 <constraint firstItem="2r4-fW-fWp" firstAttribute="width" secondItem="s22-YH-dwq" secondAttribute="width" multiplier="0.8" id="wvc-XF-TZQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="71" y="-89"/>
+            <point key="canvasLocation" x="87" y="-88"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>

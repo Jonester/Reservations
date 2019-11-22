@@ -1,6 +1,0 @@
-build/*
-.build/*
-.build-ubuntu/*
-*.xcodeproj/*
-Package.resolved
-.DS_Store

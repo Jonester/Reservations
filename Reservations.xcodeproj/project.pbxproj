@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F95158F1238715D200126EBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95158EF238715D200126EBF /* SettingsViewController.swift */; };
 		F95158F2238715D200126EBF /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95158F0238715D200126EBF /* SettingsViewController.xib */; };
-		F97E6DC323872F6200B7D986 /* KituraKit-master in Resources */ = {isa = PBXBuildFile; fileRef = F97E6DC223872F6200B7D986 /* KituraKit-master */; };
 		F9C379DA23861A39002BE1D6 /* ReservationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C379D923861A39002BE1D6 /* ReservationsViewModel.swift */; };
 		F9C379DF23862009002BE1D6 /* AddReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C379DD23862009002BE1D6 /* AddReservationViewController.swift */; };
 		F9C379E023862009002BE1D6 /* AddReservationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9C379DE23862009002BE1D6 /* AddReservationViewController.xib */; };
@@ -50,7 +49,6 @@
 /* Begin PBXFileReference section */
 		F95158EF238715D200126EBF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F95158F0238715D200126EBF /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
-		F97E6DC223872F6200B7D986 /* KituraKit-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "KituraKit-master"; sourceTree = "<group>"; };
 		F9C379D923861A39002BE1D6 /* ReservationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewModel.swift; sourceTree = "<group>"; };
 		F9C379DD23862009002BE1D6 /* AddReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReservationViewController.swift; sourceTree = "<group>"; };
 		F9C379DE23862009002BE1D6 /* AddReservationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReservationViewController.xib; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		F9D17CC223860DEB00944929 /* Reservations */ = {
 			isa = PBXGroup;
 			children = (
-				F97E6DC223872F6200B7D986 /* KituraKit-master */,
 				F9F92AB42387282300D5CEA0 /* Models */,
 				F9E45EE22386E702001AF00C /* Reservations.xcdatamodeld */,
 				F9D17CC323860DEB00944929 /* AppDelegate.swift */,
@@ -283,7 +280,6 @@
 				F95158F2238715D200126EBF /* SettingsViewController.xib in Resources */,
 				F9D17CD023860DEC00944929 /* Assets.xcassets in Resources */,
 				F9C379E023862009002BE1D6 /* AddReservationViewController.xib in Resources */,
-				F97E6DC323872F6200B7D986 /* KituraKit-master in Resources */,
 				F9E45EE82386E86F001AF00C /* ReservationCell.xib in Resources */,
 				F9D17CCB23860DEB00944929 /* Main.storyboard in Resources */,
 			);

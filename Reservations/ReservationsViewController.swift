@@ -108,7 +108,6 @@ private extension ReservationsViewController {
         let addReservationViewController = AddReservationViewController()
         let navController = UINavigationController(rootViewController: addReservationViewController)
         modalPresentationStyle = .formSheet
-//        addReservationViewController.preferredContentSize = CGSize(width: 1024, height: 300)
         addReservationViewController.delegate = self
         present(navController, animated: true, completion: nil)
     }
@@ -117,7 +116,6 @@ private extension ReservationsViewController {
         let settingsViewController = SettingsViewController()
         let navController = UINavigationController(rootViewController: settingsViewController)
         modalPresentationStyle = .formSheet
-//        settingsViewController.preferredContentSize = CGSize(width: settingsViewController.view.frame.size.width, height: 300)
         present(navController, animated: true, completion: nil)
     }
 }
