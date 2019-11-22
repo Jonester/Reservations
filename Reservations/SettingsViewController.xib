@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad10_5" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nL-UR-Wpb">
-                    <rect key="frame" x="20" y="70" width="80" height="25"/>
+                    <rect key="frame" x="20" y="52" width="80" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="Me5-Yq-NLb"/>
                         <constraint firstAttribute="width" constant="80" id="cm7-kv-tZB"/>
@@ -29,7 +29,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcp-YW-5cZ">
-                    <rect key="frame" x="120" y="70" width="819" height="175"/>
+                    <rect key="frame" x="120" y="50" width="819" height="175"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="175" id="5tX-J2-vSz"/>
@@ -41,10 +41,10 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="4nL-UR-Wpb" firstAttribute="top" secondItem="zcp-YW-5cZ" secondAttribute="top" id="Boq-NF-fnE"/>
+                <constraint firstItem="4nL-UR-Wpb" firstAttribute="top" secondItem="zcp-YW-5cZ" secondAttribute="top" constant="2" id="Boq-NF-fnE"/>
                 <constraint firstItem="zcp-YW-5cZ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="Byb-td-VXx"/>
                 <constraint firstItem="zcp-YW-5cZ" firstAttribute="leading" secondItem="4nL-UR-Wpb" secondAttribute="trailing" constant="20" id="QmO-Et-skc"/>
-                <constraint firstItem="zcp-YW-5cZ" firstAttribute="top" secondItem="BKV-QM-6q9" secondAttribute="top" constant="70" id="Xfn-O7-R3e"/>
+                <constraint firstItem="zcp-YW-5cZ" firstAttribute="top" secondItem="BKV-QM-6q9" secondAttribute="top" constant="50" id="Xfn-O7-R3e"/>
                 <constraint firstItem="4nL-UR-Wpb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="jpw-Wx-Xie"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

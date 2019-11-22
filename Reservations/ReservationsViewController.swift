@@ -49,6 +49,14 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
             cell.phoneNumberLabel.text = NSLocalizedString(reservation.phoneNumber, comment: "")
             cell.partySizeLabel.text = String(format: NSLocalizedString("%i", comment: ""), reservation.partySize)
         }
+        
+//        cell.nameLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+//        cell.phoneNumberLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+//        cell.partySizeLabel.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+//        
+//        cell.nameLabel.layer.borderWidth = 1.0
+//        cell.phoneNumberLabel.layer.borderWidth = 1.0
+//        cell.partySizeLabel.layer.borderWidth = 1.0
 
         return cell
     }

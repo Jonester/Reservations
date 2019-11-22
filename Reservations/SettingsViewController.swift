@@ -20,6 +20,9 @@ class SettingsViewController: UIViewController {
 
         let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         navigationItem.leftBarButtonItem = cancelBarButtonItem
+        
+        messageTextView.layer.borderColor = CGColor(srgbRed: 211/255, green: 211/255, blue: 211/255, alpha: 1)
+        messageTextView.layer.borderWidth = 1.0
     }
 
     @objc func cancel() {
