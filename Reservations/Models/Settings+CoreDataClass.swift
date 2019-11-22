@@ -14,12 +14,24 @@ import CoreData
 public class Settings: NSManagedObject {
 
     static func settings(message: String, context: NSManagedObjectContext) -> Settings? {
-        guard let entity = NSEntityDescription.entity(forEntityName: "Settings", in: context) else { return nil }
-        let settings = Settings(entity: entity, insertInto: context)
-        settings.message = message
-        settings.uuid = UUID().uuidString
 
-        return settings
+        //hackey fix for demo
+        guard let settings = Settings.fetchSettings(in: context) else { return nil }
+        for setting in settings {
+            context.delete(setting)
+        }
+        do {
+            try context.save()
+        } catch {
+            print("error")
+        }
+
+        guard let entity = NSEntityDescription.entity(forEntityName: "Settings", in: context) else { return nil }
+        let newSettings = Settings(entity: entity, insertInto: context)
+        newSettings.message = message
+        newSettings.uuid = UUID().uuidString
+
+        return newSettings
     }
 
     static func fetchSettings(in context: NSManagedObjectContext) -> [Settings]? {

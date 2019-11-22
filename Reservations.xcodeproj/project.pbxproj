@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C6D0A07238772060013440D /* KituraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6D0A06238772060013440D /* KituraKit */; };
 		3C6D0A4E238777E90013440D /* git_push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3C6D0A4C238777E90013440D /* git_push.sh */; };
 		3C6D0A4F238778290013440D /* MessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A3F238777BD0013440D /* MessageParams.swift */; };
 		3C6D0A50238778290013440D /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A41238777BD0013440D /* MessageResponse.swift */; };
@@ -106,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C6D0A07238772060013440D /* KituraKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +282,6 @@
 			);
 			name = Reservations;
 			packageProductDependencies = (
-				3C6D0A06238772060013440D /* KituraKit */,
 			);
 			productName = Reservations;
 			productReference = F9D17CC023860DEB00944929 /* Reservations.app */;
@@ -359,7 +356,6 @@
 			);
 			mainGroup = F9D17CB723860DEB00944929;
 			packageReferences = (
-				3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */,
 			);
 			productRefGroup = F9D17CC123860DEB00944929 /* Products */;
 			projectDirPath = "";
@@ -754,25 +750,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/IBM-Swift/KituraKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3C6D0A06238772060013440D /* KituraKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */;
-			productName = KituraKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F9E45EE22386E702001AF00C /* Reservations.xcdatamodeld */ = {

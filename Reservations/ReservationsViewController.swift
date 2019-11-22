@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KituraKit
 
 typealias AddReservationCompletion = ((Result<(), NSError>) -> ())
 
@@ -98,27 +97,28 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
         messageAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
             reservation.messageSentAt = Date()
-            reservation.index = -1
-//            guard let client = KituraKit(baseURL: "", containsSelfSignedCert: false) else { return }
-            guard let context = ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext) else { return }
-            do {
-                try context.save()
-            } catch {
-                print("oops")
-            }
-//            let settings = Settings.fetchSettings(in: context)
-//            guard let setting = settings?.first else { return }
-//            let messageParams = MessageParams(phone: reservation.phoneNumber, message: setting.message)
-//            client.post("/message", data: messageParams) { (response: [MessageResponse]?, error: Error?) in
-//                DispatchQueue.main.async {
-//                    guard let realm = try? Realm() else { return }
-//                    if error != nil {
-//                        
-//                        return
-//                    }
-//                }
-//            }
-            Reservation.resetIndex(in: context)
+            let settings = Settings.fetchSettings(in: ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!)
+            guard let setting = settings?.first else { return }
+            let phone = reservation.phoneNumber
+            let message = setting.message
+            let url = URL(string: "https://notifications-hyeah.herokuapp.com/message")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = "phone=1\(phone)&message=\(message)".data(using: .utf8)
+
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let error = error {
+                    print("Error: \(String(describing: error))")
+                    // handle error
+                    return
+                }
+                if let data = data, let responseDetails = String(data: data, encoding: .utf8) {
+                    print("Response: \(responseDetails)")
+                    // handle success
+                } else {
+                    // handle error
+                }
+            }).resume()
             self.refreshTableView()
         })
 
