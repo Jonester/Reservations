@@ -22,7 +22,7 @@ public class Settings: NSManagedObject {
         return settings
     }
 
-    static func fetchReservations(in context: NSManagedObjectContext) -> [Settings]? {
+    static func fetchSettings(in context: NSManagedObjectContext) -> [Settings]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Settings")
         do {
             guard let settings = try context.fetch(fetchRequest) as? [Settings] else { return nil }

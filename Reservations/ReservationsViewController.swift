@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KituraKit
 
 typealias AddReservationCompletion = ((Result<(), NSError>) -> ())
 
@@ -53,7 +54,7 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 120
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -80,6 +81,21 @@ class ReservationsViewController: UITableViewController, AddReservationDelegate 
 
         messageAction = UIContextualAction.init(style: .normal, title: title, handler: { action, sourceView, completionHandler in
             reservation.messageSentAt = Date()
+            guard let client = KituraKit(baseURL: "", containsSelfSignedCert: false) else {
+                return
+            }
+            let settings = Settings.fetchSettings(in: ((UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext)!)
+            guard let setting = settings?.first else { return }
+            let messageParams = MessageParams(phone: reservation.phoneNumber, message: setting.message)
+            client.post("/message", data: messageParams) { (response: [MessageResponse]?, error: Error?) in
+                DispatchQueue.main.async {
+//                    guard let realm = try? Realm() else { return }
+//                    if error != nil {
+//                        
+//                        return
+//                    }
+                }
+            }
             self.refreshTableView()
         })
 

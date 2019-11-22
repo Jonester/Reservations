@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C6D0A07238772060013440D /* KituraKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3C6D0A06238772060013440D /* KituraKit */; };
+		3C6D0A4E238777E90013440D /* git_push.sh in Resources */ = {isa = PBXBuildFile; fileRef = 3C6D0A4C238777E90013440D /* git_push.sh */; };
+		3C6D0A4F238778290013440D /* MessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A3F238777BD0013440D /* MessageParams.swift */; };
+		3C6D0A50238778290013440D /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A41238777BD0013440D /* MessageResponse.swift */; };
+		3C6D0A51238778290013440D /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A40238777BD0013440D /* Status.swift */; };
+		3C6D0A522387782B0013440D /* CodableHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6D0A3B238777BD0013440D /* CodableHelper.swift */; };
 		F95158F1238715D200126EBF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95158EF238715D200126EBF /* SettingsViewController.swift */; };
 		F95158F2238715D200126EBF /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F95158F0238715D200126EBF /* SettingsViewController.xib */; };
 		F9C379DA23861A39002BE1D6 /* ReservationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C379D923861A39002BE1D6 /* ReservationsViewModel.swift */; };
@@ -47,6 +53,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C6D0A37238777BD0013440D /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
+		3C6D0A38238777BD0013440D /* AlamofireImplementations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireImplementations.swift; sourceTree = "<group>"; };
+		3C6D0A3A238777BD0013440D /* DefaultAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAPI.swift; sourceTree = "<group>"; };
+		3C6D0A3B238777BD0013440D /* CodableHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableHelper.swift; sourceTree = "<group>"; };
+		3C6D0A3C238777BD0013440D /* JSONEncodableEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodableEncoding.swift; sourceTree = "<group>"; };
+		3C6D0A3D238777BD0013440D /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		3C6D0A3F238777BD0013440D /* MessageParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParams.swift; sourceTree = "<group>"; };
+		3C6D0A40238777BD0013440D /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		3C6D0A41238777BD0013440D /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		3C6D0A42238777BD0013440D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3C6D0A43238777BD0013440D /* JSONEncodingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncodingHelper.swift; sourceTree = "<group>"; };
+		3C6D0A44238777BD0013440D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		3C6D0A45238777BD0013440D /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		3C6D0A46238777DE0013440D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = GeneratedSDK/.gitignore; sourceTree = "<group>"; };
+		3C6D0A48238777E10013440D /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		3C6D0A49238777E80013440D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = GeneratedSDK/.gitignore; sourceTree = "<group>"; };
+		3C6D0A4A238777E80013440D /* SwaggerClient.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = SwaggerClient.podspec; path = GeneratedSDK/SwaggerClient.podspec; sourceTree = "<group>"; };
+		3C6D0A4B238777E90013440D /* .swagger-codegen-ignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = ".swagger-codegen-ignore"; path = "GeneratedSDK/.swagger-codegen-ignore"; sourceTree = "<group>"; };
+		3C6D0A4C238777E90013440D /* git_push.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = git_push.sh; path = GeneratedSDK/git_push.sh; sourceTree = "<group>"; };
+		3C6D0A4D238777E90013440D /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Cartfile; path = GeneratedSDK/Cartfile; sourceTree = "<group>"; };
 		F95158EF238715D200126EBF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F95158F0238715D200126EBF /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		F9C379D923861A39002BE1D6 /* ReservationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C6D0A07238772060013440D /* KituraKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +127,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C6D0A34238777BD0013440D /* SwaggerClient */ = {
+			isa = PBXGroup;
+			children = (
+				3C6D0A35238777BD0013440D /* Classes */,
+			);
+			path = SwaggerClient;
+			sourceTree = "<group>";
+		};
+		3C6D0A35238777BD0013440D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3C6D0A36238777BD0013440D /* Swaggers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		3C6D0A36238777BD0013440D /* Swaggers */ = {
+			isa = PBXGroup;
+			children = (
+				3C6D0A37238777BD0013440D /* APIHelper.swift */,
+				3C6D0A38238777BD0013440D /* AlamofireImplementations.swift */,
+				3C6D0A39238777BD0013440D /* APIs */,
+				3C6D0A3C238777BD0013440D /* JSONEncodableEncoding.swift */,
+				3C6D0A3D238777BD0013440D /* APIs.swift */,
+				3C6D0A3E238777BD0013440D /* Models */,
+				3C6D0A42238777BD0013440D /* Extensions.swift */,
+				3C6D0A43238777BD0013440D /* JSONEncodingHelper.swift */,
+				3C6D0A44238777BD0013440D /* Models.swift */,
+				3C6D0A45238777BD0013440D /* Configuration.swift */,
+			);
+			path = Swaggers;
+			sourceTree = "<group>";
+		};
+		3C6D0A39238777BD0013440D /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				3C6D0A3A238777BD0013440D /* DefaultAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		3C6D0A3E238777BD0013440D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3C6D0A47238777E10013440D /* .swagger-codegen */ = {
+			isa = PBXGroup;
+			children = (
+				3C6D0A48238777E10013440D /* VERSION */,
+			);
+			path = ".swagger-codegen";
+			sourceTree = "<group>";
+		};
 		F9D17CB723860DEB00944929 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +207,19 @@
 			isa = PBXGroup;
 			children = (
 				F9F92AB42387282300D5CEA0 /* Models */,
+				3C6D0A46238777DE0013440D /* .gitignore */,
+				3C6D0A49238777E80013440D /* .gitignore */,
+				3C6D0A4B238777E90013440D /* .swagger-codegen-ignore */,
+				3C6D0A4D238777E90013440D /* Cartfile */,
+				3C6D0A4C238777E90013440D /* git_push.sh */,
+				3C6D0A4A238777E80013440D /* SwaggerClient.podspec */,
+				3C6D0A47238777E10013440D /* .swagger-codegen */,
+				3C6D0A34238777BD0013440D /* SwaggerClient */,
 				F9E45EE22386E702001AF00C /* Reservations.xcdatamodeld */,
+				3C6D0A3B238777BD0013440D /* CodableHelper.swift */,
+				3C6D0A3F238777BD0013440D /* MessageParams.swift */,
+				3C6D0A40238777BD0013440D /* Status.swift */,
+				3C6D0A41238777BD0013440D /* MessageResponse.swift */,
 				F9D17CC323860DEB00944929 /* AppDelegate.swift */,
 				F9D17CC523860DEB00944929 /* SceneDelegate.swift */,
 				F9D17CC723860DEB00944929 /* ReservationsViewController.swift */,
@@ -188,6 +283,9 @@
 			dependencies = (
 			);
 			name = Reservations;
+			packageProductDependencies = (
+				3C6D0A06238772060013440D /* KituraKit */,
+			);
 			productName = Reservations;
 			productReference = F9D17CC023860DEB00944929 /* Reservations.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +358,9 @@
 				Base,
 			);
 			mainGroup = F9D17CB723860DEB00944929;
+			packageReferences = (
+				3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */,
+			);
 			productRefGroup = F9D17CC123860DEB00944929 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -282,6 +383,7 @@
 				F9C379E023862009002BE1D6 /* AddReservationViewController.xib in Resources */,
 				F9E45EE82386E86F001AF00C /* ReservationCell.xib in Resources */,
 				F9D17CCB23860DEB00944929 /* Main.storyboard in Resources */,
+				3C6D0A4E238777E90013440D /* git_push.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,12 +413,16 @@
 				F9E45EDC2386D506001AF00C /* Reservation+CoreDataClass.swift in Sources */,
 				F9D17CC823860DEB00944929 /* ReservationsViewController.swift in Sources */,
 				F9E45EDF2386D506001AF00C /* Settings+CoreDataProperties.swift in Sources */,
+				3C6D0A4F238778290013440D /* MessageParams.swift in Sources */,
 				F9C379DA23861A39002BE1D6 /* ReservationsViewModel.swift in Sources */,
 				F9D17CC423860DEB00944929 /* AppDelegate.swift in Sources */,
+				3C6D0A522387782B0013440D /* CodableHelper.swift in Sources */,
 				F9E45EDD2386D506001AF00C /* Reservation+CoreDataProperties.swift in Sources */,
 				F9C379DF23862009002BE1D6 /* AddReservationViewController.swift in Sources */,
 				F9D17CC623860DEB00944929 /* SceneDelegate.swift in Sources */,
+				3C6D0A51238778290013440D /* Status.swift in Sources */,
 				F9E45EDE2386D506001AF00C /* Settings+CoreDataClass.swift in Sources */,
+				3C6D0A50238778290013440D /* MessageResponse.swift in Sources */,
 				F95158F1238715D200126EBF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -648,6 +754,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IBM-Swift/KituraKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C6D0A06238772060013440D /* KituraKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3C6D0A05238772060013440D /* XCRemoteSwiftPackageReference "KituraKit" */;
+			productName = KituraKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		F9E45EE22386E702001AF00C /* Reservations.xcdatamodeld */ = {
